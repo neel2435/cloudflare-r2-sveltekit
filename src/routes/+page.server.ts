@@ -10,7 +10,10 @@ const S3 = new S3Client({
     },
 });
 
+console.log("making sure page server is doing stuff")
+
 export async function _getFileFromS3(bucketName: string, objectKey: string): Promise<string> {
+    
     const params = {
       Bucket: bucketName,
       Key: objectKey,
@@ -19,9 +22,9 @@ export async function _getFileFromS3(bucketName: string, objectKey: string): Pro
     try {
       const command = new GetObjectCommand(params);
       const response = await S3.send(command);
-  
+      console.log("command sent")
       // Assuming the object is in text format, return the contents as a string
-      return await response.Body?.toString() || "";
+      return response.Body?.toString() || "";
     } catch (error) {
       console.error("Error retrieving file from S3:", error);
       return "";
