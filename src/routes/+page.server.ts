@@ -1,34 +1,23 @@
-import { R2_ACCESS_KEY, R2_ACCOUNT_ID, R2_SECRET_KEY } from "$env/static/private";
-import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3";
+/** @type {import('./$types').PageServerLoad} */
 
-const S3 = new S3Client({
-    region: "auto",
-    endpoint: `https://${R2_ACCOUNT_ID}.r2.cloudflarestorage.com`,
-    credentials: {
-        accessKeyId: R2_ACCESS_KEY,
-        secretAccessKey: R2_SECRET_KEY,
-    },
-});
+console.log("in page.server")
 
-console.log("making sure page server is doing stuff")
+export async function load({platform}) {
+  console.log("in /+page.server.ts (getHTML)");
+  const obj = await platform.env.R2_BUCKET.get('2fb31edca72c058c5e3d6453abf11fc8c97bc81873bc1a73700dfe7f152aabc8.html');
+  console.log("get html from R2");
 
-export async function _getFileFromS3(bucketName: string, objectKey: string): Promise<string> {
-    
-    const params = {
-      Bucket: bucketName,
-      Key: objectKey,
-    };
-  
-    try {
-      const command = new GetObjectCommand(params);
-      const response = await S3.send(command);
-      console.log("command sent")
-      // Assuming the object is in text format, return the contents as a string
-      return response.Body?.toString() || "";
-    } catch (error) {
-      console.error("Error retrieving file from S3:", error);
-      return "";
-    }
+
+  if (obj === null) {
+    return null;
   }
+
+  let html = await obj.text();
+  console.log("html retrieved");
+  return html;
+}
+
+
+
 
   
