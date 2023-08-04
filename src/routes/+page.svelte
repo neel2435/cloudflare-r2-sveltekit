@@ -5,4 +5,4 @@
 </script>
 
 
-<p>{@html data.title}</p>
+<p>{data.title}</p>
