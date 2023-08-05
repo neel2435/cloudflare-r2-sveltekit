@@ -21,7 +21,8 @@ export const actions = {
         
         const response = await fetch(url);
         const html = await response.text();
-        console.log(html);
+        const htmlNoStyle = html.replace(/<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>/gi, '');
+        console.log(htmlNoStyle);
         // const htmlWithoutStyles = stripStyles(html);
       
         // const dom = new JSDOM(htmlWithoutStyles, { url });
@@ -38,7 +39,7 @@ export const actions = {
 
       return {
         success: true,
-        html: url,
+        html: html,
         hash: hashHex
       }
   }
