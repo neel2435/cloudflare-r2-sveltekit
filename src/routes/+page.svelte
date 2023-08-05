@@ -3,7 +3,7 @@
 </script>
 
 <style>
-	form {
+	body {
       font-family: Arial, sans-serif;
       display: flex;
       justify-content: center;
@@ -12,17 +12,27 @@
       margin: 0;
       background-color: #f0f0f0;
     }
-
-	input {
-	  width: 300px;
+    
+    .container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .textbox {
+      width: 300px;
       padding: 10px;
       border: 1px solid #ccc;
       border-radius: 5px;
       margin-bottom: 10px;
       font-size: 16px;
-	}
+    }
     
-  button {
+    .button {
       background-color: #47a7f5;
       color: #fff;
       padding: 10px 20px;
@@ -30,20 +40,23 @@
       border-radius: 5px;
       cursor: pointer;
       transition: background-color 0.3s ease;
-   }
+    }
     
-   button:hover {
+    .button:hover {
       background-color: #368dd0;
-   }
+    }
 </style>
 
-<form method="POST">
-    <label>
-        Enter website here...
-        <input name="url" type="url">
-    </label>
-    <button>Submit</button>
-</form>
+<body>
+    <div class="container">
+    <form method="POST">
+        <label>
+            <input name="url" type="url" class="textbox" placeholder="Enter URL Here...">
+        </label>
+        <button class="button">Submit</button>
+    </form>
+    </div>
+</body>
 
 <!-- <body>
     <div class="container">
