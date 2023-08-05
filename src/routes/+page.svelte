@@ -69,7 +69,7 @@
     <div class="container">
       <form on:submit={handleSubmit}>
         <input type="text" class="textbox" placeholder="Enter text..." bind:value={userInput}>
-        <button class="button" type="submit">Submit</button>
+        <button class="button" type="submit"><a href="/retrieve">Submit</a></button>
       </form>
     </div>
   </body>
