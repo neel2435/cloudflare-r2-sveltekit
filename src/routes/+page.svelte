@@ -15,4 +15,4 @@
 
 
 <!-- {@html reconstructedString} -->
-<li><a href="/page2">Go to page 2</a></li>
+<li><a href="/retrieve">Go to page 2</a></li>
