@@ -21,18 +21,19 @@ export const actions = {
         
         const response = await fetch(url);
         const html = await response.text();
+        const htmlNoStyle = html.replace(/<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>/gi, '');
         
-        const titleMatch = html.match(/<title[^>]*>(.*?)<\/title>/i);
+        const titleMatch = htmlNoStyle.match(/<title[^>]*>(.*?)<\/title>/i);
         const title = titleMatch ? titleMatch[1] : 'No Title';
 
-        const bodyMatch = html.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
+        const bodyMatch = htmlNoStyle.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
         const bodyContent = bodyMatch ? bodyMatch[1] : 'No Content';
 
-        const imgMatches = html.match(/<img[^>]+>/g) || [];
+        const imgMatches = htmlNoStyle.match(/<img[^>]+>/g) || [];
         const images = imgMatches.join('');
         
         
-        // const htmlNoStyle = html.replace(/<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>/gi, '');
+        
         // console.log(htmlNoStyle);
         // const htmlWithoutStyles = stripStyles(html);
       
