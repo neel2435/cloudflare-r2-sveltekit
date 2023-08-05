@@ -30,19 +30,6 @@ export const actions = {
         const article = reader.parse();
         console.log(article?.title);
         console.log(article?.content);
-
-
-        // const titleMatch = htmlNoStyle.match(/<title[^>]*>(.*?)<\/title>/i);
-        // const title = titleMatch ? titleMatch[1] : 'No Title';
-
-        // const bodyMatch = htmlNoStyle.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
-        // const bodyContent = bodyMatch ? bodyMatch[1] : 'No Content';
-
-        // const pMatches = bodyContent.match(/<p[^>]*>(.*?)<\/p>/gi);
-        // const paragraphs = pMatches ? pMatches.map(match => match.replace(/<\/?p[^>]*>/g, '')) : [];
-
-        // const imgMatches = htmlNoStyle.match(/<img[^>]+>/g) || [];
-        // const images = imgMatches.join('');
         
         
         

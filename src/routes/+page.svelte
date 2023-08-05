@@ -1,4 +1,5 @@
 <script>
+    import { JSDOM } from 'jsdom';
     /** @type {import('./$types').ActionData} */
     export let form;
     
