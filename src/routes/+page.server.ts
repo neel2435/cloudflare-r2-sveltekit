@@ -16,14 +16,14 @@ export async function load({platform}) {
   console.log("in /+page.server.ts (getHTML)");
   const html = await platform.env.R2_BUCKET.get('2fb31edca72c058c5e3d6453abf11fc8c97bc81873bc1a73700dfe7f152aabc8.html');
   console.log("get html from R2");
+  const obj = html.text();
 
-
-  if (html === null) {
+  if (obj === null) {
     return null;
   }
 
   console.log("html retrieved");
-  return html;
+  return obj;
 }
 
 
