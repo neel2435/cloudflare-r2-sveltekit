@@ -56,8 +56,9 @@
         <button class="button" type="submit">Submit</button>
     </form>
     </div>
+    <br>
     {#if form?.success}
-        <div><pre>{form?.html}</pre></div>
+        <div style="display:block"><pre>{form?.html}</pre></div>
     {/if}
 </body>
 
