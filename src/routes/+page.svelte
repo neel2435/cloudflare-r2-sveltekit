@@ -1,6 +1,6 @@
 <script>
     /** @type {import('./$types').ActionData} */
-    export let form: any;
+    export let form;
     
 </script>
 
