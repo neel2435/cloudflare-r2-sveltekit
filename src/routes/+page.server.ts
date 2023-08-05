@@ -21,13 +21,15 @@ export const actions = {
         
         const response = await fetch(url);
         const html = await response.text();
-        const htmlNoStyle = html.replace(/<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>/gi, '');
+        //const htmlNoStyle = html.replace(/<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>/gi, '');
         
         const domParser = new DOMParser();
         const document = domParser.parseFromString(html, 'text/html');
 
         const reader = new Readability(document);
         const article = reader.parse();
+        console.log(article?.title);
+        console.log(article?.content);
 
 
         // const titleMatch = htmlNoStyle.match(/<title[^>]*>(.*?)<\/title>/i);
@@ -69,10 +71,10 @@ export const actions = {
   }
 };
 
-interface ReadabilityResult {
-  title: string;
-  content: string;
-}
+// interface ReadabilityResult {
+//   title: string;
+//   content: string;
+// }
 
 
 // function createFormattedHtml(article: ReadabilityResult): string {
