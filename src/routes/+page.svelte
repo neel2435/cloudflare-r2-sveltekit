@@ -1,5 +1,6 @@
 <script>
-
+    /** @type {import('./$types').ActionData} */
+    export let form: any;
     
 </script>
 
@@ -55,7 +56,11 @@
         <button class="button" type="submit">Submit</button>
     </form>
     </div>
+    {#if form?.success}
+        <pre>{form?.html}</pre>
+    {/if}
 </body>
+
 
 <!-- <body>
     <div class="container">

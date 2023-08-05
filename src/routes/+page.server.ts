@@ -1,3 +1,4 @@
+
 /** @type {import('./$types').Actions} */
 export const actions = {
   verify: async ({request, platform }) => {
@@ -5,6 +6,10 @@ export const actions = {
       const url = data.get('url')
       console.log(url);
       //fix this part
+      return {
+        success: true,
+        html: url
+      }
   }
 };
 
