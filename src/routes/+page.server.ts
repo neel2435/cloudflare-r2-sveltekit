@@ -29,6 +29,9 @@ export const actions = {
         const bodyMatch = htmlNoStyle.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
         const bodyContent = bodyMatch ? bodyMatch[1] : 'No Content';
 
+        const pMatches = bodyContent.match(/<p[^>]*>(.*?)<\/p>/gi);
+        const paragraphs = pMatches ? pMatches.map(match => match.replace(/<\/?p[^>]*>/g, '')) : [];
+
         const imgMatches = htmlNoStyle.match(/<img[^>]+>/g) || [];
         const images = imgMatches.join('');
         
@@ -55,6 +58,7 @@ export const actions = {
         hash: hashHex,
         title: title,
         body: bodyContent,
+        paragraphs: paragraphs,
         images: images
       }
   }
