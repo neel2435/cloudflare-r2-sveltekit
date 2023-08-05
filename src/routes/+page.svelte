@@ -58,6 +58,7 @@
     </div>
     {#if form?.success}
         <pre>{form?.html}</pre>
+        <pre>{form?.hash}</pre>
     {/if}
 </body>
 
