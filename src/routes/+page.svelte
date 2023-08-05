@@ -51,9 +51,7 @@
 <body>
     <div class="container">
     <form method="POST" action="?/verify">
-        <label>
-            <input name="url" type="url" class="textbox" placeholder="Enter URL Here...">
-        </label>
+        <input name="url" type="url" class="textbox" placeholder="Enter URL Here...">
         <button class="button" type="submit">Submit</button>
     </form>
     </div>
