@@ -5,7 +5,7 @@
 </script>
 
 <style>
-	/* body {
+	body {
       font-family: Arial, sans-serif;
       display: flex;
       justify-content: center;
@@ -13,7 +13,7 @@
       min-height: 100vh;
       margin: 0;
       background-color: #f0f0f0;
-    } */
+    }
     
     .container {
       background-color: #fff;
