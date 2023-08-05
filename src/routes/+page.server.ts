@@ -2,7 +2,8 @@
 export const actions = {
   verify: async ({request, platform }) => {
       const data = await request.formData();
-      console.log(data.text());
+      const url = data.get('url')
+      console.log(url);
       //fix this part
   }
 };
