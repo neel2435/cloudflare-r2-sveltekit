@@ -13,6 +13,7 @@ export const actions = {
       //fix this part
       
         const hash = crypto.createHash('sha256').update(url).digest('hex');
+        console.log({hash});
         
         const html = await fetchUrl(url);
         const htmlWithoutStyles = stripStyles(html);
