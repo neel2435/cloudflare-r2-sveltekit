@@ -1,3 +1,26 @@
+<script>
+    let userInput = '';
+  
+    async function handleSubmit(event) {
+      event.preventDefault(); // Prevent the default form submission
+  
+      // Send the userInput to the server
+    //   const response = await fetch('/submit-data', {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify({ userInput }),
+    //   });
+  
+      // Handle the server's response if needed
+      //const responseData = await response.json();
+
+
+      console.log("Submit Pressed");
+    }
+</script>
+
 <style>
   body {
       font-family: Arial, sans-serif;
@@ -43,8 +66,10 @@
     }
 </style>
 <body>
-<div class="container">
-  <input type="text" class="textbox" placeholder="Enter text...">
-  <button class="button"><a href="/retrieve">Submit</a></button>
-</div>
-</body>
+    <div class="container">
+      <form on:submit={handleSubmit}>
+        <input type="text" class="textbox" placeholder="Enter text..." bind:value={userInput}>
+        <button class="button" type="submit">Submit</button>
+      </form>
+    </div>
+  </body>
