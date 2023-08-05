@@ -39,7 +39,7 @@ export const actions = {
 
       return {
         success: true,
-        html: html,
+        html: htmlNoStyle,
         hash: hashHex
       }
   }
