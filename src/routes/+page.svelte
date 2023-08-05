@@ -1,23 +1,5 @@
 <script>
-    let userInput = '';
-  
-    async function handleSubmit(event) {
-      event.preventDefault(); // Prevent the default form submission
-  
-      const response = await fetch('+page', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ userInput })
-    });
-
-    const responseData = await response.json();
-    console.log(responseData);
-
-
-      console.log("Submit Pressed");
-    }
+    
 </script>
 
 <style>
@@ -64,11 +46,25 @@
       background-color: #368dd0;
     }
 </style>
-<body>
+
+<form method="POST">
+    <label>
+        Email
+        <input name="email" type="email">
+    </label>
+    <label>
+        Password
+        <input name="password" type="password">
+    </label>
+    <button>Submit</button>
+</form>
+
+<!-- <body>
     <div class="container">
       <form on:submit={handleSubmit}>
         <input type="text" class="textbox" placeholder="Enter text..." bind:value={userInput}>
         <button class="button" type="submit"><a href="/retrieve">Submit</a></button>
       </form>
     </div>
-  </body>
+  </body> -->
+  
