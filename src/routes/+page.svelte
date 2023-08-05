@@ -6,4 +6,4 @@
 </script>
 
 
-<p>{@html data}</p>
+{@html data}
