@@ -4,17 +4,16 @@
     async function handleSubmit(event) {
       event.preventDefault(); // Prevent the default form submission
   
-      // Send the userInput to the server
-    //   const response = await fetch('/submit-data', {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify({ userInput }),
-    //   });
-  
-      // Handle the server's response if needed
-      //const responseData = await response.json();
+      const response = await fetch('+page', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ userInput })
+    });
+
+    const responseData = await response.json();
+    console.log(responseData);
 
 
       console.log("Submit Pressed");
