@@ -58,7 +58,7 @@
     </div>
     {#if form?.success}
         <h1>{@html form?.title}</h1>
-        <p>{form?.body}</p>
+        <p>{@html form?.body}</p>
     {/if}
 </body>
 
