@@ -8,7 +8,7 @@
 	body {
       font-family: Arial, sans-serif;
       display: flex;
-      justify-content: center;
+      /*justify-content: center;*/
       align-items: center;
       min-height: 100vh;
       margin: 0;
@@ -57,8 +57,7 @@
     </form>
     </div>
     {#if form?.success}
-        <h1>{@html form?.title}</h1>
-        <p>{@html form?.paragraphs}</p>
+        {@html form?.html}
     {/if}
 </body>
 

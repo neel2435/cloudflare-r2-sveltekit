@@ -23,17 +23,24 @@ export const actions = {
         const html = await response.text();
         const htmlNoStyle = html.replace(/<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>/gi, '');
         
-        const titleMatch = htmlNoStyle.match(/<title[^>]*>(.*?)<\/title>/i);
-        const title = titleMatch ? titleMatch[1] : 'No Title';
+        const domParser = new DOMParser();
+        const document = domParser.parseFromString(html, 'text/html');
 
-        const bodyMatch = htmlNoStyle.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
-        const bodyContent = bodyMatch ? bodyMatch[1] : 'No Content';
+        const reader = new Readability(document);
+        const article = reader.parse();
 
-        const pMatches = bodyContent.match(/<p[^>]*>(.*?)<\/p>/gi);
-        const paragraphs = pMatches ? pMatches.map(match => match.replace(/<\/?p[^>]*>/g, '')) : [];
 
-        const imgMatches = htmlNoStyle.match(/<img[^>]+>/g) || [];
-        const images = imgMatches.join('');
+        // const titleMatch = htmlNoStyle.match(/<title[^>]*>(.*?)<\/title>/i);
+        // const title = titleMatch ? titleMatch[1] : 'No Title';
+
+        // const bodyMatch = htmlNoStyle.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
+        // const bodyContent = bodyMatch ? bodyMatch[1] : 'No Content';
+
+        // const pMatches = bodyContent.match(/<p[^>]*>(.*?)<\/p>/gi);
+        // const paragraphs = pMatches ? pMatches.map(match => match.replace(/<\/?p[^>]*>/g, '')) : [];
+
+        // const imgMatches = htmlNoStyle.match(/<img[^>]+>/g) || [];
+        // const images = imgMatches.join('');
         
         
         
@@ -54,32 +61,18 @@ export const actions = {
 
       return {
         success: true,
-        html: html,
-        hash: hashHex,
-        title: title,
-        body: bodyContent,
-        paragraphs: paragraphs,
-        images: images
+        html: article,
+        hash: hashHex
+        
       }
   }
 };
 
-// interface ReadabilityResult {
-//   title: string;
-//   content: string;
-// }
+interface ReadabilityResult {
+  title: string;
+  content: string;
+}
 
-// async function fetchUrl(url: string): Promise<string> {
-//   const response = await fetch(url);
-//   if (!response.ok) {
-//     throw new Error(`Failed to fetch URL: ${response.status} ${response.statusText}`);
-//   }
-//   return await response.text();
-// }
-
-// function stripStyles(html: string): string {
-//   return html.replace(/<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>/gi, '');
-// }
 
 // function createFormattedHtml(article: ReadabilityResult): string {
 //   const dom = new JSDOM('');
