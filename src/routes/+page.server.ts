@@ -20,24 +20,24 @@ export const actions = {
         const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
         console.log(hashHex);
         
-        const html = await fetchUrl(url);
-        const htmlWithoutStyles = stripStyles(html);
+        // const html = await fetchUrl(url);
+        // const htmlWithoutStyles = stripStyles(html);
       
-        const dom = new JSDOM(htmlWithoutStyles, { url });
-        const reader = new Readability(dom.window.document);
-        const article: ReadabilityResult = reader.parse();
+        // const dom = new JSDOM(htmlWithoutStyles, { url });
+        // const reader = new Readability(dom.window.document);
+        // const article: ReadabilityResult = reader.parse();
       
-        //const filePath = `${hash}.html`;
+        // //const filePath = `${hash}.html`;
       
-        const formattedHtml = createFormattedHtml(article);
+        // const formattedHtml = createFormattedHtml(article);
 
-        console.log('Reader view stored successfully.');
+        // console.log('Reader view stored successfully.');
       
       
 
       return {
         success: true,
-        html: formattedHtml
+        html: url
       }
   }
 };
