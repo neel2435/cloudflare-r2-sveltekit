@@ -56,19 +56,9 @@
         <button class="button" type="submit">Submit</button>
     </form>
     </div>
-    <br>
     {#if form?.success}
-        <div style="display:block"><pre>{form?.html}</pre></div>
+        <pre>{form?.html}</pre>
     {/if}
 </body>
 
-
-<!-- <body>
-    <div class="container">
-      <form on:submit={handleSubmit}>
-        <input type="text" class="textbox" placeholder="Enter text..." bind:value={userInput}>
-        <button class="button" type="submit"><a href="/retrieve">Submit</a></button>
-      </form>
-    </div>
-  </body> -->
   
