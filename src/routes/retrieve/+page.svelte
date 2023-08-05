@@ -13,8 +13,9 @@
 console.log(reconstructedString);
 </script>
 
-
+<body>
 {@html reconstructedString}
+</body>
 
 <style>
     body {

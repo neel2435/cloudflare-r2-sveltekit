@@ -4,7 +4,7 @@
   }
   
   .container {
-    background-color: #ffd5a5;
+    background-color: #ffecd7;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
