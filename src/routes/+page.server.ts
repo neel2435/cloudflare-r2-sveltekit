@@ -2,7 +2,7 @@
 export const actions = {
   verify: async ({request, platform }) => {
       const data = await request.formData();
-      console.log(data);
+      console.log(JSON.stringify(data));
       //fix this part
   }
 };
