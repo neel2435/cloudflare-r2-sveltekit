@@ -1,8 +1,8 @@
 <script>
     /** @type {import('./$types').PageData} */
     export let data;
-
+    let ArticleText = data.text();
 </script>
 
 
-<p>{data.text}</p>
+<p>{ArticleText}</p>
