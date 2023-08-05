@@ -1,6 +1,6 @@
 import { JSDOM } from 'jsdom';
 import { Readability } from '@mozilla/readability';
-import { createHash } from 'node:crypto';
+import { createHash } from 'crypto';
 //import * as fs from 'fs';
 import fetch from 'node-fetch';
 
