@@ -1,5 +1,6 @@
 <script>
-    /** @type {import('./$types').PageData} */
+    //** @type {import('./$types').PageData} */
+    /** @type {string} */
     export let data;
     
 </script>
