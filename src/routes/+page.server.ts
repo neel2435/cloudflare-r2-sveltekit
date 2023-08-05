@@ -62,8 +62,9 @@ export const actions = {
       return {
         success: true,
         html: article,
-        hash: hashHex
-        
+        hash: hashHex,
+        title: article?.title,
+        content: article?.content
       }
   }
 };
