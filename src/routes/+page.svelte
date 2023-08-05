@@ -49,7 +49,7 @@
 
 <body>
     <div class="container">
-    <form method="POST" action="/verify">
+    <form method="POST" action="?/verify">
         <label>
             <input name="url" type="url" class="textbox" placeholder="Enter URL Here...">
         </label>
