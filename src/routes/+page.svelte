@@ -6,11 +6,11 @@
     align-items: center;
     min-height: 100vh;
     margin: 0;
-    background-color: #f0f0f0;
+    background-color: #240f03;
   }
   
   .container {
-    background-color: #fff;
+    background-color: #fec88a;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
