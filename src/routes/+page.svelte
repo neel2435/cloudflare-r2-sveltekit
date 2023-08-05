@@ -1,21 +1,16 @@
 <style>
   body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
-    background-color: #240f03;
+    background-color: #000000;
   }
   
   .container {
-    background-color: #fec88a;
+    background-color: #ffd5a5;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
   }
   
@@ -26,6 +21,8 @@
     border-radius: 5px;
     margin-bottom: 10px;
     font-size: 16px;
+    justify-content: center;
+    align-items: center;
   }
   
   .button {
@@ -36,6 +33,8 @@
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    justify-content: center;
+    align-items: center;
   }
   
   .button:hover {

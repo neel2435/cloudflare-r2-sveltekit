@@ -15,3 +15,9 @@ console.log(reconstructedString);
 
 
 {@html reconstructedString}
+
+<style>
+    body {
+        background-color: rgb(255, 255, 255);
+    }
+</style>
