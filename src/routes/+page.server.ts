@@ -1,5 +1,5 @@
 //import { JSDOM } from 'jsdom';
-// import { Readability } from '@mozilla/readability';
+import { Readability } from '@mozilla/readability';
 //import * as fs from 'fs';
 
 /** @type {import('./$types').Actions} */
