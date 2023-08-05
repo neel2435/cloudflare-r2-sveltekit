@@ -1,8 +1,9 @@
 /** @type {import('./$types').Actions} */
 export const actions = {
-  verify: async ({ cookies, request, platform }) => {
+  verify: async ({request, platform }) => {
       const data = await request.formData();
       console.log(data);
+      //fix this part
   }
 };
 
