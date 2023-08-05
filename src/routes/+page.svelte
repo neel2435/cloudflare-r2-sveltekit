@@ -1,5 +1,8 @@
 <script>
-    
+    let url = '';
+    const handleSubmit = async() => {
+        
+    }
 </script>
 
 <style>
@@ -49,11 +52,11 @@
 
 <body>
     <div class="container">
-    <form method="POST" action="?/verify">
+    <form on:submit|preventDefault={handleSubmit}>
         <label>
             <input name="url" type="url" class="textbox" placeholder="Enter URL Here...">
         </label>
-        <button class="button">Submit</button>
+        <button class="button" type="submit"><a href="/retrieve">Submit</a></button>
     </form>
     </div>
 </body>
