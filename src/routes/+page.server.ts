@@ -1,7 +1,7 @@
 import { JSDOM } from 'jsdom';
 import { Readability } from '@mozilla/readability';
 import { createHash } from 'node:crypto';
-import * as fs from 'fs';
+//import * as fs from 'fs';
 import fetch from 'node-fetch';
 
 /** @type {import('./$types').Actions} */
