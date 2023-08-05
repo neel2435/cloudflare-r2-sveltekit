@@ -1,7 +1,6 @@
 // import { JSDOM } from 'jsdom';
 // import { Readability } from '@mozilla/readability';
 //import * as fs from 'fs';
-// import fetch from 'node-fetch';
 
 /** @type {import('./$types').Actions} */
 export const actions = {
@@ -20,7 +19,9 @@ export const actions = {
         const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
         console.log(hashHex);
         
-        // const html = await fetchUrl(url);
+        const response = await fetch(url);
+        const html = await response.text();
+        console.log(html);
         // const htmlWithoutStyles = stripStyles(html);
       
         // const dom = new JSDOM(htmlWithoutStyles, { url });
