@@ -1,6 +1,6 @@
 import { JSDOM } from 'jsdom';
 import { Readability } from '@mozilla/readability';
-import * as crypto from 'crypto';
+import { createHash } from 'node:crypto';
 import * as fs from 'fs';
 import fetch from 'node-fetch';
 
@@ -12,7 +12,7 @@ export const actions = {
       console.log(url);
       //fix this part
       
-        const hash = crypto.createHash('sha256').update(url).digest('hex');
+        const hash = createHash('sha256').update(url).digest('hex');
         console.log({hash});
         
         const html = await fetchUrl(url);
