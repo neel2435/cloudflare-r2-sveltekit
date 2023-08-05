@@ -1,5 +1,3 @@
-
-<title>Cozy Textbox</title>
 <style>
   body {
     font-family: Arial, sans-serif;
@@ -50,4 +48,3 @@
   <button class="button"><a href="/retrieve">Submit</a></button>
 </div>
 </body>
-<a href="/retrieve">Go to page 2</a>
