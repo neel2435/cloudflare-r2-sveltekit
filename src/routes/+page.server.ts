@@ -1,8 +1,7 @@
 import { JSDOM } from 'jsdom';
 import { Readability } from '@mozilla/readability';
-//import { createHash } from 'crypto';
 //import * as fs from 'fs';
-import fetch from 'node-fetch';
+// import fetch from 'node-fetch';
 
 /** @type {import('./$types').Actions} */
 export const actions = {
@@ -12,8 +11,14 @@ export const actions = {
       console.log(url);
       //fix this part
       
-        //const hash = createHash('sha256').update(url).digest('hex');
-        //console.log({hash});
+        const encodedJson = new TextEncoder().encode(url);
+
+
+        console.log("create sha256 hash");
+        const myDigest = await crypto.subtle.digest({ name: 'SHA-256' }, encodedJson);
+        const hashArray = Array.from(new Uint8Array(myDigest));
+        const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        console.log(hashHex);
         
         const html = await fetchUrl(url);
         const htmlWithoutStyles = stripStyles(html);
