@@ -59,7 +59,6 @@
     {#if form?.success}
         <h1>{@html form?.title}</h1>
         <p>{@html form?.content}</p>
-        <pre>{form?.html}</pre>
     {/if}
 </body>
 
