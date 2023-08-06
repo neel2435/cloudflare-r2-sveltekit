@@ -27,9 +27,9 @@ export const actions = {
         const domParser = new DOMParser();
         const document = domParser.parseFromString(html, 'text/html');
 
-        const readabilitydocument = document as Document;
+        //const readabilitydocument = document as Document;
         
-        const reader = new Readability(readabilitydocument);
+        const reader = new Readability(document);
         const article = reader.parse();
         console.log(article?.title);
         console.log(article?.content);
