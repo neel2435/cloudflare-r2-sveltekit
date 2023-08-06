@@ -56,9 +56,8 @@ export const actions = {
 };
 
 async function getObject(platform, hash: string) {
-  console.log("in /+page.server.ts (getHTML)");
   const jsonString = await platform.env.R2_BUCKET.get(hash);
-  console.log("get html from R2");
+  console.log("get thing from bucket");
   console.log(jsonString);
 
   if (jsonString === null) {
@@ -72,5 +71,6 @@ async function getObject(platform, hash: string) {
 
 async function putObject(platform, hash:string, article) {
   const articleJson = JSON.stringify(article);
-  await platform.env.R2_BUCKET.put(hash, articleJson)
+  await platform.env.R2_BUCKET.put(hash, articleJson);
+  console.log('put thing in bucket');
 }
