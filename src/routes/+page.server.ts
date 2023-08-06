@@ -66,7 +66,8 @@ async function getObject(platform, hash: string) {
   }
 
   console.log("html retrieved");
-  return jsonObj;
+  const json = await jsonObj.text();
+  return JSON.parse(json);
 }
 
 
