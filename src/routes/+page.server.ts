@@ -53,7 +53,7 @@ export const actions = {
 
       return {
         success: true,
-        html: article,
+        html: JSON.stringify(article),
         hash: hashHex,
         title: article?.title,
         content: article?.content
