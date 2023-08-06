@@ -1,5 +1,4 @@
 <script>
-    import DOMPurify from 'dompurify';
     /** @type {import('./$types').ActionData} */
     export let form;
     

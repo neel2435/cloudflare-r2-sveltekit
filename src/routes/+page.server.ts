@@ -1,4 +1,5 @@
 //import { JSDOM } from 'jsdom';
+import {DOMParser} from "linkedom"
 import { Readability } from '@mozilla/readability';
 //import * as fs from 'fs';
 
@@ -26,7 +27,9 @@ export const actions = {
         const domParser = new DOMParser();
         const document = domParser.parseFromString(html, 'text/html');
 
-        const reader = new Readability(document);
+        const readabilitydocument = document as Document;
+        
+        const reader = new Readability(readabilitydocument);
         const article = reader.parse();
         console.log(article?.title);
         console.log(article?.content);
@@ -58,10 +61,10 @@ export const actions = {
   }
 };
 
-// interface ReadabilityResult {
-//   title: string;
-//   content: string;
-// }
+interface ReadabilityResult {
+  title: string;
+  content: string;
+}
 
 
 // function createFormattedHtml(article: ReadabilityResult): string {
