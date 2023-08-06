@@ -57,16 +57,16 @@ export const actions = {
 };
 
 async function getObject(platform, hash: string) {
-  const jsonString = await platform.env.R2_BUCKET.get(hash);
+  const jsonObj = await platform.env.R2_BUCKET.get(hash);
   console.log("get thing from bucket");
-  console.log(jsonString);
+  console.log(jsonObj);
 
-  if (jsonString === null) {
+  if (jsonObj === null) {
     return null;
   }
 
   console.log("html retrieved");
-  return JSON.parse(jsonString);
+  return jsonObj;
 }
 
 
