@@ -23,6 +23,7 @@ export const actions = {
         //check R2
       const obj = await getObject(platform, hashHex)
       if (obj) {
+        console.log('i after getobject');
         return {
           success: true,
           html: JSON.stringify(obj),
