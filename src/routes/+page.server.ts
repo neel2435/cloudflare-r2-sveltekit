@@ -1,34 +1,78 @@
-import { R2_ACCESS_KEY, R2_ACCOUNT_ID, R2_SECRET_KEY } from "$env/static/private";
-import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3";
+//import { JSDOM } from 'jsdom';
+import {DOMParser} from "linkedom"
+import { Readability } from '@mozilla/readability';
+//import * as fs from 'fs';
+/** @type {import('./$types').PageServerLoad} */
+/** @type {import('./$types').Actions} */
+export const actions = {
+  verify: async ({request, platform }) => {
+      const formdata = await request.formData();
+      const url = formdata.get('url')?.toString()
+      console.log(url);
+      //fix this part
+      
+      const encodedJson = new TextEncoder().encode(url);
 
-const S3 = new S3Client({
-    region: "auto",
-    endpoint: `https://${R2_ACCOUNT_ID}.r2.cloudflarestorage.com`,
-    credentials: {
-        accessKeyId: R2_ACCESS_KEY,
-        secretAccessKey: R2_SECRET_KEY,
-    },
-});
 
-console.log("making sure page server is doing stuff")
+      console.log("create sha256 hash");
+      const myDigest = await crypto.subtle.digest({ name: 'SHA-256' }, encodedJson);
+      const hashArray = Array.from(new Uint8Array(myDigest));
+      const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+      console.log(hashHex);
+        
+        //check R2
+      const obj = await getObject(platform, hashHex)
+      if (obj) {
+        console.log('i after getobject');
+        return {
+          success: true,
+          html: JSON.stringify(obj),
+          hash: hashHex,
+          title: obj?.title,
+          content: obj?.content
+        };
+      }
 
-export async function _getFileFromS3(bucketName: string, objectKey: string): Promise<string> {
-    
-    const params = {
-      Bucket: bucketName,
-      Key: objectKey,
-    };
-  
-    try {
-      const command = new GetObjectCommand(params);
-      const response = await S3.send(command);
-      console.log("command sent")
-      // Assuming the object is in text format, return the contents as a string
-      return response.Body?.toString() || "";
-    } catch (error) {
-      console.error("Error retrieving file from S3:", error);
-      return "";
-    }
+      const response = await fetch(url);
+      const html = await response.text();
+      //const htmlNoStyle = html.replace(/<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>/gi, '');
+        
+      const domParser = new DOMParser();
+      const document = domParser.parseFromString(html, 'text/html');
+       
+      const reader = new Readability(document);
+      const article = reader.parse();
+      console.log(article?.title);
+      
+      await putObject(platform, hashHex, {title: article?.title, content: article?.content})
+
+      return {
+        success: true,
+        html: JSON.stringify(article),
+        hash: hashHex,
+        title: article?.title,
+        content: article?.content
+      }
+  }
+};
+
+async function getObject(platform, hash: string) {
+  const jsonObj = await platform.env.R2_BUCKET.get(hash);
+  console.log("get thing from bucket");
+  console.log(jsonObj);
+
+  if (jsonObj === null) {
+    return null;
   }
 
-  
+  console.log("html retrieved");
+  const json = await jsonObj.text();
+  return JSON.parse(json);
+}
+
+
+async function putObject(platform, hash:string, article) {
+  const articleJson = JSON.stringify(article);
+  await platform.env.R2_BUCKET.put(hash, articleJson);
+  console.log('put thing in bucket');
+}
